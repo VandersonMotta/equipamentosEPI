@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ; 
 
 show tables;
-select*from colaborador; 
+select*from colaborador;
 -- -----------------------------------------------------
 -- Table `mydb`.`Colaborador`
 -- -----------------------------------------------------
