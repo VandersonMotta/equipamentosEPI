@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ColaboradorForm
-
+from django.contrib import messages
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -10,10 +10,11 @@ def cadastrar_colaborador(request):
         form = ColaboradorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('sucesso')
+            messages.success(request, 'Colaborador cadastrado com sucesso!')
+            return redirect(cadastrar_colaborador)
     else:
         form = ColaboradorForm()
-    return render(request, 'cadastrar_colaborador.html', {'form' : form})
+    return render(request, 'app_home/pages/cadastrar_colaborador.html', {'form' : form})
 
 def sucesso(request):
-    return render(request,'sucesso.html')
+    return render(request,'app_home/pages/sucesso.html')

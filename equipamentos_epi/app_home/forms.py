@@ -2,6 +2,6 @@ from django import forms
 from .models import Colaborador
 
 class ColaboradorForm(forms.ModelForm):
-    class meta: 
+    class Meta: 
         model = Colaborador
         fields = ['nome', 'email', 'cargo', 'telefone']

@@ -134,3 +134,20 @@
     cursor: pointer;
 }
 
+header a {
+    list-style: none;
+    text-decoration: none;
+    color: rgb(3, 10, 77);
+}
+
+main {
+    margin-left: 260px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    height: calc(100vh - 60px);
+}
+

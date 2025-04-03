@@ -8,81 +8,46 @@
         <title>Equipamentos EPI</title>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
     <body>
 
-        <div class="navbar">
-            <div class="navbar-left">
-                <li class="w3-xlarge"><i class="fa fa-home"></i>Home</li>
+        <header>
+            <div class="navbar">
+                <div class="navbar-left">
+                    <li class="w3-xlarge"><i class="fa fa-home"></i>Home</li>
+                </div>
+                <div class="navbar-right">
+                    <span><i class="fa fa-user"></i> Usuário</span>
+                </div>
             </div>
-            <div class="navbar-right">
-                <span><i class="fa fa-user"></i> Usuário</span>
-            </div>
-        </div>
-        <div class="sidebar">
-            <button class="accordion">Equipamentos</button>
-            <div class="panel">
-                <p class="submenu" data-target="cadastrar equipamentos">Cadastrar equipamentos</p>
-                <p class="submenu" data-target="editar equipamentos">Editar equipamentos</p>
+            <div class="sidebar">
+                <button class="accordion">Equipamentos</button>
+                <div class="panel">
+                    <p class="submenu" data-target="cadastrar equipamentos">Cadastrar equipamentos</p>
+                    <p class="submenu" data-target="editar equipamentos">Editar equipamentos</p>
+                </div>
+
+                <button class="accordion">Controle EPI</button>
+                <div class="panel">
+                    <p class="submenu" data-target="registrar ação">Registrar ação</p>
+                    <p class="submenu" data-target="relatorios">Relatórios</p>
+                </div>
+
+                <button class="accordion">Colaborador</button>
+                <div class="panel">
+                    <a class="submenu" href="/cadastrar_colaborador">Cadastrar colaborador</a>
+                    <a class="submenu" href="#">Relatórios</a>
+                    <a class="submenu" href="#">Editar colaboradores</a>
+                </div>
             </div>
 
-            <button class="accordion">Controle EPI</button>
-            <div class="panel">
-                <p class="submenu" data-target="registrar ação">Registrar ação</p>
-                <p class="submenu" data-target="relatorios">Relatórios</p>
-            </div>
+        <header>
 
-            <button class="accordion">Colaborador</button>
-            <div class="panel">
-                <p class="submenu" data-target="cadastrar colaborador">Cadastrar colaborador</p>
-                <p class="submenu" data-target="relatorio2">Relatórios</p>
-                <p class="submenu" data-target="editar colaboradores">Editar colaboradores</p>
-            </div>
-        </div>
-
-        <!--Cadastro de Colaborador -->
-        <div class="content">
-            <div id="cadastrar equipamentos" class="content-box hidden">
-                <h2>Cadastro de Equipamentos</h2>
-                <article class="cadastro-box">
-                    <form>
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
-                    
-                        <label for="quantidade">Quantidade:</label>
-                        <input type="number" id="quantidade" name="quantidade" required>
-
-                        <button type="submit">Salvar</button>
-                    </form>
-                </article>            
-            </div>
-        </div>
-
-        <div class="content">
-        <!--Cadastro de Colaborador -->
-        <div id="cadastrar colaborador" class="content-box hidden">
-            <h2>Cadastro de Colaborador</h2>
-            <article class="cadastro-box">
-                <form method="POST">
-                    {% csrf_token %}
-                    <label for="nome-colaborador">Nome:</label>
-                    <input type="text" id="nome-colaborador" name="nome-colaborador" required>
-        
-                    <label for="email-colaborador">E-mail:</label>
-                    <input type="email" id="email-colaborador" name="email-colaborador" required>
-        
-                    <label for="cargo-colaborador">Cargo:</label>
-                    <input type="text" id="cargo-colaborador" name="cargo-colaborador" required>
-        
-                    <label for="telefone-colaborador">Telefone:</label>
-                    <input type="tel" id="telefone-colaborador" name="telefone-colaborador" required>
-        
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </article>
-        </div>  
+            <main>
+                {% block content %}{% endblock content %}
+            </main>
 
         <script src="static/script/script.js"></script>
 
