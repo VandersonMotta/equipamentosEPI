@@ -39,6 +39,7 @@
     overflow: hidden;
     border-left: 3px solid;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .navbar {
@@ -131,15 +132,5 @@
     width: 100%;
     text-align: left;
     cursor: pointer;
-}
-
-/* Mudança de cor ao passar o mouse sobre o botão */
-.cadastro-box .submenu:hover {
-    background-color: #020d4b; /* Cor verde quando passa o mouse */
-}
-
-/* Cor quando o item é ativo (clicado) */
-.cadastro-box .submenu.active {
-    background-color: #020d4b; /* Cor verde quando passa o mouse */
 }
 
