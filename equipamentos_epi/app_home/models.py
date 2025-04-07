@@ -20,3 +20,19 @@ class EPI(models.Model):
 
     def __str__(self):
         return self.nomeEPI
+    
+class Registrar (models.Model):
+    equipamento = models.CharField (max_length=100)
+    colaborador = models.CharField (max_length=100)
+    status = models.CharField (max_length=100)
+    condquipamento = models.CharField (max_length=100)
+    observacao = models.CharField (max_length=100)
+    datadevolucao = models.DateField()
+    dataemprestimo =models.DateField()
+    dataprevistadadevolucao = models.DateField()
+
+    def __str__(self):
+        return self.equipamento
+
+
+

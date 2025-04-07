@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ColaboradorForm
 from .forms import EPIForm
+from .forms import RegistrarForm
 from django.contrib import messages
 
 def home(request):
@@ -33,3 +34,17 @@ def cadastrar_epi(request):
 
 def cadastro_epi_sucesso(request):
     return render(request,'app_home/pages/cadastro_epi_sucesso.html')
+
+def registrar (request):
+    if request.method == 'POST':
+        form = RegistrarForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Registrado com sucesso!')
+            return redirect(registrar)  
+    else:
+        form = RegistrarForm()
+    return render(request, 'app_home/pages/registro.html', {'form': form})
+
+def registrar(request):
+    return render(request,'app_home/pages/registro.html')
