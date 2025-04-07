@@ -10,3 +10,13 @@ class Colaborador(models.Model):
 
     def __str__(self):
         return self.nome
+
+class EPI(models.Model):
+    nomeEPI = models.CharField(max_length=100)
+    descricao = models.TextField()
+    validade = models.DateField()
+    quantidade_disponivel = models.IntegerField()
+    codigo = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nomeEPI

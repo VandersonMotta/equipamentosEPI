@@ -39,7 +39,6 @@
     overflow: hidden;
     border-left: 3px solid;
     margin-bottom: 5px;
-    cursor: pointer;
 }
 
 .navbar {
@@ -71,83 +70,3 @@
 .navbar i {
     margin-right: 8px;
 }
-
-.content {
-    margin-left: 260px;
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px);
-}
-
-.cadastro-box form{
-    width: 600px;
-    padding: 20px;
-    background-color: #b1c7db;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    text-align: center;
-}
-
-.cadastro-box label {
-    display: block;
-    text-align: left;
-    width: 100%;
-}
-
-.cadastro-box input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid white;
-    margin-bottom: 8px;
-}
-
-.hidden {
-    display: none;
-}
-
-.cadastro-box button {
-    background-color: #0B2B40; 
-    color: white;
-    border: none; 
-    padding: 10px 20px;
-    text-align: center; 
-    font-size: 16px; 
-    cursor: pointer; 
-    border-radius: 5px;
-}
-
-.cadastro-box button:hover {
-    background-color: #3B70A2; 
-}
-
-/* Estilo do botão de submenu */
-.cadastro-box .submenu {
-    padding: 10px;
-    font-size: 18px;
-    background-color: #425363;
-    color: white;
-    border: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-}
-
-header a {
-    list-style: none;
-    text-decoration: none;
-    color: rgb(3, 10, 77);
-}
-
-main {
-    margin-left: 260px;
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    height: calc(100vh - 60px);
-}
-
