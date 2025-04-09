@@ -44,7 +44,7 @@ def registrar (request):
             return redirect(registrar)  
     else:
         form = RegistrarForm()
-    return render(request, 'app_home/pages/registro.html', {'form': form})
+    return render(request, 'app_home/pages/registrar.html', {'form': form})
 
-def registrar(request):
-    return render(request,'app_home/pages/registro.html')
+def registro_sucesso(request):
+    return render(request,'app_home/pages/registro_sucesso.html')

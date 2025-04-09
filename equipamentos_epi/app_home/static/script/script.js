@@ -14,7 +14,7 @@ for (var i = 0; i < acc.length; i++) {
 }
 
 //método para exibição do conteúdo baseado no submenu clicado
-document.querySelectorAll(".submenu").forEach(item => {
+document.querySelectorAll(".panel a").forEach(item => {
     item.addEventListener("click", function () {
         // Esconde todas as caixas de conteúdo
         document.querySelectorAll(".content-box").forEach(box => {

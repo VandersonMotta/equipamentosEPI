@@ -8,5 +8,6 @@ urlpatterns = [
     path('cadastrar_epi/', views.cadastrar_epi),
     path('cadastro_epi_sucesso/', views.cadastro_epi_sucesso),
     path('registrar/', views.registrar),
+    path('registro_sucesso/', views.registro_sucesso),
 ]
 

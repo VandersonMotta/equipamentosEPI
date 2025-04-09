@@ -39,6 +39,7 @@
     overflow: hidden;
     border-left: 3px solid;
     margin-bottom: 5px;
+    flex-direction: column;
 }
 
 .navbar {
