@@ -21,15 +21,24 @@ class EPI(models.Model):
     def __str__(self):
         return self.nomeEPI
     
-class Registrar (models.Model):
-    equipamento = models.CharField (max_length=100)
-    colaborador = models.CharField (max_length=100)
-    status = models.CharField (max_length=100)
-    condquipamento = models.CharField (max_length=100)
-    observacao = models.CharField (max_length=100)
-    datadevolucao = models.DateField()
-    dataemprestimo =models.DateField()
-    dataprevistadadevolucao = models.DateField()
+class Registrar(models.Model):
+    STATUS_CHOICES = [
+        ('emprestado', 'Emprestado'),
+        ('em_uso', 'Em uso'),
+        ('fornecido', 'Fornecido'),
+        ('devolvido', 'Devolvido'),
+        ('danificado', 'Danificado'),
+        ('perdido', 'Perdido'),
+    ]
+
+    equipamento = models.CharField(max_length=100)
+    colaborador = models.CharField(max_length=100)
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES)
+    condicao_quipamento = models.CharField(max_length=100)
+    observacao = models.CharField(max_length=100, blank=True, null=True)
+    data_devolucao = models.DateField(blank=True, null=True)
+    data_emprestimo = models.DateField()
+    data_prevista_da_devolucao = models.DateField()
 
     def __str__(self):
         return self.equipamento

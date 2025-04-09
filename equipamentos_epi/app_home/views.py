@@ -40,10 +40,13 @@ def registrar (request):
         form = RegistrarForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Registrado com sucesso!')
-            return redirect(registrar)  
+            messages.success(request, 'Registrado com sucesso!')  
+            return redirect('registro_sucesso')       
+        else:        
+            messages.error(request, "Item não foi cadastrado. Verifique os campos obrigatórios.")
     else:
         form = RegistrarForm()
+
     return render(request, 'app_home/pages/registrar.html', {'form': form})
 
 def registro_sucesso(request):

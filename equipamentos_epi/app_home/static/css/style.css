@@ -8,6 +8,7 @@
     padding-top: 20px;
     color: rgb(3, 10, 77);
     padding-left: 20px;
+    z-index: 999;
 }
 
 .sidebar ul {
@@ -70,4 +71,37 @@
 
 .navbar i {
     margin-right: 8px;
+}
+
+.content-wrapper {
+    margin-left: 250px; 
+    padding-top: 50px;  
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+main {
+    margin-left: 250px; /* mesma largura da sidebar */
+    margin-top: 50px;   /* mesma altura da navbar */
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color:rgb(136, 164, 190);
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
 }

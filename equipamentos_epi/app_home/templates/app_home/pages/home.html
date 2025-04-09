@@ -45,9 +45,12 @@
 
     </header>
 
-            <main>
-                {% block content %}{% endblock content %}
-            </main>
+    <div class="content-wrapper">
+        <main class="main-content">
+            {% block content %}{% endblock content %}
+        </main>
+    </div>
+    
 
             {% load static %}
             <script src="{% static 'script/script.js' %}"></script>
