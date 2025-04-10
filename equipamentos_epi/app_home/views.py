@@ -9,8 +9,8 @@ def home(request):
     return render(request, 'app_home/pages/home.html')
 
 def listar_colaboradores(request): 
-    Colaboradores = Colaborador.objects.all()
-    return render(request, 'app_home/pages/listar_colaboradores.html')
+    colaboradores = Colaborador.objects.all()  # (a) nome com letra minúscula por convenção
+    return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})  # (b) envia pro template
 
 
 def cadastrar_colaborador(request):
