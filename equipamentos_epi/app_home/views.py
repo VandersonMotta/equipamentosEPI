@@ -3,9 +3,15 @@ from .forms import ColaboradorForm
 from .forms import EPIForm
 from .forms import RegistrarForm
 from django.contrib import messages
+from .models import Colaborador
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
+
+def listar_colaboradores(request): 
+    Colaboradores = Colaborador.objects.all()
+    return render(request, 'app_home/pages/listar_colaboradores.html')
+
 
 def cadastrar_colaborador(request):
     if request.method == 'POST':

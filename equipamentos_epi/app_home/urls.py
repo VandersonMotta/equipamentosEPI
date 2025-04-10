@@ -9,5 +9,6 @@ urlpatterns = [
     path('cadastro_epi_sucesso/', views.cadastro_epi_sucesso),
     path('registrar/', views.registrar),
     path('registro_sucesso/', views.registro_sucesso, name = 'registro_sucesso'),
+    path('listar-colaboradores/', views.listar_colaboradores, name='listar_colaboradores'),
 ]
 

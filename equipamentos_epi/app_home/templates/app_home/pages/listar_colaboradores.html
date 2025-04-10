@@ -1,0 +1,32 @@
+{% extends 'app_home/pages/home.html' %}
+
+{% block content %}
+    <div class="w3-container">
+        <h2>Colaboradores Cadastrados</h2>
+
+        {% if colaboradores %}
+            <table class="w3-table-all w3-hoverable">
+                <thead>
+                    <tr class="w3-light-grey">
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Cargo</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for colaborador in colaboradores %}
+                        <tr>
+                            <td>{{ colaborador.nome }}</td>
+                            <td>{{ colaborador.email }}</td>
+                            <td>{{ colaborador.cargo }}</td>
+                            <td>{{ colaborador.telefone }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum colaborador cadastrado.</p>
+        {% endif %}
+    </div>
+{% endblock content %}
