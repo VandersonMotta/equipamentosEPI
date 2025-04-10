@@ -34,7 +34,7 @@ class Registrar(models.Model):
     equipamento = models.CharField(max_length=100)
     colaborador = models.CharField(max_length=100)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES)
-    condicao_quipamento = models.CharField(max_length=100)
+    condicao_equipamento = models.CharField(max_length=100)
     observacao = models.CharField(max_length=100, blank=True, null=True)
     data_devolucao = models.DateField(blank=True, null=True)
     data_emprestimo = models.DateField()

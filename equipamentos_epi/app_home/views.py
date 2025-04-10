@@ -41,7 +41,7 @@ def registrar (request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Registrado com sucesso!')  
-            return redirect('registro_sucesso')       
+            return redirect(registrar)       
         else:        
             messages.error(request, "Item não foi cadastrado. Verifique os campos obrigatórios.")
     else:

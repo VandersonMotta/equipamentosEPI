@@ -16,7 +16,7 @@ class EPIForm(forms.ModelForm):
 class RegistrarForm (forms.ModelForm):
     class Meta:
         model = Registrar
-        fields = ['equipamento', 'colaborador', 'status','condicao_quipamento','observacao','data_devolucao','data_emprestimo','data_prevista_da_devolucao']
+        fields = ['equipamento', 'colaborador', 'status','condicao_equipamento','observacao','data_devolucao','data_emprestimo','data_prevista_da_devolucao']
       
     def clean(self):
         cleaned_data = super().clean()
