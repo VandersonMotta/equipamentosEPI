@@ -4,6 +4,7 @@ from .forms import EPIForm
 from .forms import RegistrarForm
 from django.contrib import messages
 from .models import Colaborador
+from .models import EPI
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -12,13 +13,14 @@ def listar_colaboradores(request):
     colaboradores = Colaborador.objects.all()
     return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})
 
+
 def editar_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)
     if request.method == 'POST':
         form = ColaboradorForm(request.POST, instance=colaborador)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Colaborador atualizado com sucesso!')
+            messages.success(request, 'Colaborador atualizado!')
             return redirect('listar_colaboradores')
     else:
         form = ColaboradorForm(instance=colaborador)    
@@ -54,6 +56,15 @@ def cadastrar_epi(request):
     else:
         form = EPIForm()
     return render(request, 'app_home/pages/cadastrar_epi.html', {'form': form})
+
+def editar_epi(request, id):
+    epi = get_object_or_404(EPI, id=id)
+    if request.method == 'POST':
+        form = EPIForm(request.POST, instance=epi)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Equipamento atualizado!')
+            return redirect('listar_epi')
 
 def cadastro_epi_sucesso(request):
     return render(request,'app_home/pages/cadastro_epi_sucesso.html')
