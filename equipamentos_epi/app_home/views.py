@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ColaboradorForm
 from .forms import EPIForm
 from .forms import RegistrarForm
@@ -9,9 +9,26 @@ def home(request):
     return render(request, 'app_home/pages/home.html')
 
 def listar_colaboradores(request): 
-    colaboradores = Colaborador.objects.all()  # (a) nome com letra minúscula por convenção
-    return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})  # (b) envia pro template
+    colaboradores = Colaborador.objects.all()
+    return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})
 
+def editar_colaborador(request, id):
+    colaborador = get_object_or_404(Colaborador, id=id)
+    if request.method == 'POST':
+        form = ColaboradorForm(request.POST, instance=colaborador)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Colaborador atualizado com sucesso!')
+            return redirect('listar_colaboradores')
+    else:
+        form = ColaboradorForm(instance=colaborador)    
+    return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
+
+def excluir_colaborador(request, id):
+    colaborador = get_object_or_404(Colaborador, id=id)
+    colaborador.delete()
+    messages.success(request, 'Colaborador excluído com sucesso!')
+    return redirect('listar_colaboradores')
 
 def cadastrar_colaborador(request):
     if request.method == 'POST':

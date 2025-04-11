@@ -21,6 +21,14 @@
                             <td>{{ colaborador.email }}</td>
                             <td>{{ colaborador.cargo }}</td>
                             <td>{{ colaborador.telefone }}</td>
+                            <td>
+                                <a href="{% url 'editar_colaborador' colaborador.id %}" class="w3-button w3-blue w3-small">
+                                    <i class="fa fa-pencil"></i> Editar
+                                </a>
+                                <a href="{% url 'excluir_colaborador' colaborador.id %}" class="w3-button w3-red w3-small" onclick="return confirm('Tem certeza que deseja excluir {{ colaborador.nome }}?')">
+                                    <i class="fa fa-trash"></i> Excluir
+                                </a>
+                            </td>                            
                         </tr>
                     {% endfor %}
                 </tbody>
