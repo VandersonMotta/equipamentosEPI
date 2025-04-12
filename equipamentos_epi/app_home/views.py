@@ -13,10 +13,6 @@ def listar_colaboradores(request):
     colaboradores = Colaborador.objects.all()
     return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})
 
-def listar_epi(request):
-    epi = EPI.objects.all()
-    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
-
 def editar_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)
     if request.method == 'POST':
@@ -34,12 +30,6 @@ def excluir_colaborador(request, id):
     colaborador.delete()
     messages.success(request, 'Colaborador excluído com sucesso!')
     return redirect('listar_colaboradores')
-
-def excluir_epi(request, id):
-    epi = get_object_or_404(EPI, id=id)
-    epi.delete()
-    messages.success(request, 'EPI excluído com sucesso!')
-    return redirect('listar_epi')
 
 def cadastrar_colaborador(request):
     if request.method == 'POST':
@@ -66,6 +56,11 @@ def cadastrar_epi(request):
         form = EPIForm()
     return render(request, 'app_home/pages/cadastrar_epi.html', {'form': form})
 
+def listar_epi(request):
+    epi = EPI.objects.all()
+    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
+
+
 def editar_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
     if request.method == 'POST':
@@ -74,6 +69,12 @@ def editar_epi(request, id):
             form.save()
             messages.success(request, 'Equipamento atualizado!')
             return redirect('listar_epi')
+
+def excluir_epi(request, id):
+    epi = get_object_or_404(EPI, id=id)
+    epi.delete()
+    messages.success(request, 'EPI excluído com sucesso!')
+    return redirect('listar_epi')
 
 def cadastro_epi_sucesso(request):
     return render(request,'app_home/pages/cadastro_epi_sucesso.html')
