@@ -4,6 +4,15 @@
     <div class="w3-container">
         <h2>Equipamentos Cadastrados</h2>
 
+            <!-- Formulário de busca -->
+    <form method="get" action="" class="w3-margin-bottom">
+        <input class="w3-input w3-border" type="text" name="busca" placeholder="Buscar equipamento" value="{{ termo_busca }}">
+        <button class="w3-button w3-blue w3-margin-top" type="submit">
+            <i class="fa fa-search"></i> Buscar
+        </button>
+    </form>
+
+    
         {% if equipamentos %}
             <table class="w3-table-all w3-hoverable">
                 <thead>

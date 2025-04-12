@@ -21,6 +21,16 @@ def listar_colaboradores(request):
         'termo_busca': termo_busca,
     })
 
+def listar_epi(request):
+    busca = request.GET.get('busca', '')
+    if busca:
+        epi = EPI.objects.filter(nome_icontains=busca)
+    else:      
+        epi = EPI.objects.all()
+        
+    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi, 'busca': busca})
+
+
 def editar_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)
     if request.method == 'POST':
@@ -32,10 +42,6 @@ def editar_colaborador(request, id):
     else:
         form = ColaboradorForm(instance=colaborador)    
     return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
-
-def listar_epi(request):
-    epi = EPI.objects.all()
-    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
 
 def excluir_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
