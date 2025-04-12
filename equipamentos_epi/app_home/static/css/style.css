@@ -65,6 +65,10 @@
     font-size: 18px;
 }
 
+.img {
+    border-radius: 200px;
+}
+
 .navbar li {
     list-style: none;
 }
