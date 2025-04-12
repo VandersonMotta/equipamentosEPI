@@ -12,5 +12,7 @@ urlpatterns = [
     path('listar_colaboradores/', views.listar_colaboradores, name= 'listar_colaboradores'),
     path('editar_colaborador/<int:id>/', views.editar_colaborador, name= 'editar_colaborador'),
     path('excluir_colaborador/<int:id>/', views.excluir_colaborador, name='excluir_colaborador'),
+    path('listar_epi/', views.listar_epi, name= 'listar_epi'),
+    path('editar_epi/', views.editar_epi, name= 'editar_epi'),
 ]
 

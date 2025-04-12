@@ -69,6 +69,9 @@ def editar_epi(request, id):
 def cadastro_epi_sucesso(request):
     return render(request,'app_home/pages/cadastro_epi_sucesso.html')
 
+def listar_epi(request):
+    return render(request, 'app_home/pages/listar_epi.html')
+
 def registrar (request):
     if request.method == 'POST':
         form = RegistrarForm(request.POST)
