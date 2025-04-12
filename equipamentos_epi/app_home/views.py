@@ -25,6 +25,19 @@ def editar_colaborador(request, id):
         form = ColaboradorForm(instance=colaborador)    
     return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
 
+def editar_epi(request, id):
+    epi = get_object_or_404(EPI, id=id)
+    if request.method == 'POST':
+        form = EPIForm(request.POST, instance=epi)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Equipamento atualizado!')
+            return redirect('listar_epi')
+    else:
+        form = EPIForm(instance=epi)
+
+    return render(request, 'app_home/pages/editar_epi.html', {'form': form})
+
 def excluir_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)
     colaborador.delete()
@@ -60,15 +73,6 @@ def listar_epi(request):
     epi = EPI.objects.all()
     return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
 
-
-def editar_epi(request, id):
-    epi = get_object_or_404(EPI, id=id)
-    if request.method == 'POST':
-        form = EPIForm(request.POST, instance=epi)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Equipamento atualizado!')
-            return redirect('listar_epi')
 
 def excluir_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
