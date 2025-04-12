@@ -10,8 +10,16 @@ def home(request):
     return render(request, 'app_home/pages/home.html')
 
 def listar_colaboradores(request): 
-    colaboradores = Colaborador.objects.all()
-    return render(request, 'app_home/pages/listar_colaboradores.html', {'colaboradores': colaboradores})
+    termo_busca = request.GET.get('busca', '')  # pega o valor do campo de busca da URL
+    if termo_busca:
+        colaboradores = Colaborador.objects.filter(nome__icontains=termo_busca)
+    else:
+        colaboradores = Colaborador.objects.all()
+        
+    return render(request, 'app_home/pages/listar_colaboradores.html', {
+        'colaboradores': colaboradores,
+        'termo_busca': termo_busca,
+    })
 
 def editar_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)
@@ -24,6 +32,19 @@ def editar_colaborador(request, id):
     else:
         form = ColaboradorForm(instance=colaborador)    
     return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
+
+def listar_epi(request):
+    epi = EPI.objects.all()
+    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
+
+def excluir_epi(request, id):
+    epi = get_object_or_404(EPI, id=id)
+    epi.delete()
+    messages.success(request, 'EPI excluído com sucesso!')
+    return redirect('listar_epi')
+
+def cadastro_epi_sucesso(request):
+    return render(request,'app_home/pages/cadastro_epi_sucesso.html')
 
 def editar_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
@@ -68,20 +89,6 @@ def cadastrar_epi(request):
     else:
         form = EPIForm()
     return render(request, 'app_home/pages/cadastrar_epi.html', {'form': form})
-
-def listar_epi(request):
-    epi = EPI.objects.all()
-    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi})
-
-
-def excluir_epi(request, id):
-    epi = get_object_or_404(EPI, id=id)
-    epi.delete()
-    messages.success(request, 'EPI excluído com sucesso!')
-    return redirect('listar_epi')
-
-def cadastro_epi_sucesso(request):
-    return render(request,'app_home/pages/cadastro_epi_sucesso.html')
 
 def registrar (request):
     if request.method == 'POST':
