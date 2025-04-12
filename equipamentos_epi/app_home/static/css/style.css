@@ -67,6 +67,8 @@
 
 .img {
     border-radius: 200px;
+    margin-left: 15px;
+    vertical-align: middle;
 }
 
 .navbar li {
