@@ -13,7 +13,7 @@ class Colaborador(models.Model):
 
 class EPI(models.Model):
     nomeEPI = models.CharField(max_length=100)
-    descricao = models.TextField()
+    descricao = models.CharField(max_length=150)
     validade = models.DateField()
     quantidade_disponivel = models.IntegerField()
     codigo = models.CharField(max_length=100)
