@@ -31,8 +31,8 @@ class Registrar(models.Model):
         ('perdido', 'Perdido'),
     ]
 
-    equipamento = models.CharField(max_length=100)
-    colaborador = models.CharField(max_length=100)
+    equipamento = models.ForeignKey(EPI, on_delete=models.CASCADE, related_name='registros')
+    colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE, related_name='registros')
     status = models.CharField(max_length=100, choices=STATUS_CHOICES)
     condicao_equipamento = models.CharField(max_length=100)
     observacao = models.CharField(max_length=100, blank=True, null=True)
@@ -41,7 +41,7 @@ class Registrar(models.Model):
     data_prevista_da_devolucao = models.DateField()
 
     def __str__(self):
-        return self.equipamento
+        return f'{self.equipamento} - {self.colaborador}'
 
 
 

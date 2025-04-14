@@ -1,3 +1,4 @@
+python manage.py shell
 {% extends "app_home/pages/home.html" %}
 
 {% block content %}
@@ -6,25 +7,75 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
     
-    {{ form.equipamento.label }}: {{ form.equipamento }}<br>
-    {{ form.colaborador.label }}: {{ form.colaborador }}<br>
-    {{ form.status.label }}: {{ form.status }}<br>
-    {{ form.condicao_equipamento.label }}: {{ form.condicao_equipamento }}<br>
+    <div>
+        {{ form.equipamento.label }}: 
+        {{ form.equipamento }}
+        {% for error in form.equipamento.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+    
+    <div>
+        {{ form.colaborador.label }}: 
+        {{ form.colaborador }}
+        {% for error in form.colaborador.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
 
+    <div>
+        {{ form.status.label }}: 
+        {{ form.status }}
+        {% for error in form.status.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.condicao_equipamento.label }}: 
+        {{ form.condicao_equipamento }}
+        {% for error in form.condicao_equipamento.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <!-- Campos dinâmicos (observação e devolução) -->
     <div id="div-observacao" style="display:none;">
-        {{ form.observacao.label }}: {{ form.observacao }}<br>
+        {{ form.observacao.label }}: 
+        {{ form.observacao }}
+        {% for error in form.observacao.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
     </div>
 
     <div id="div-devolucao" style="display:none;">
-        {{ form.data_devolucao.label }}: {{ form.data_devolucao }}<br>
+        {{ form.data_devolucao.label }}: 
+        {{ form.data_devolucao }}
+        {% for error in form.data_devolucao.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
     </div>
 
-    {{ form.data_emprestimo.label }}: {{ form.data_emprestimo }}<br>
-    {{ form.data_prevista_da_devolucao.label }}: {{ form.data_prevista_da_devolucao }}<br>
+    <div>
+        {{ form.data_emprestimo.label }}: 
+        {{ form.data_emprestimo }}
+        {% for error in form.data_emprestimo.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.data_prevista_da_devolucao.label }}: 
+        {{ form.data_prevista_da_devolucao }}
+        {% for error in form.data_prevista_da_devolucao.errors %}
+            <p style="color:red;">{{ error }}</p>
+        {% endfor %}
+    </div>
 
     <button type="submit">Cadastrar</button>
 </form>
 
+<!-- Exibição de mensagens de sucesso/erro -->
 {% if messages %}
     {% for message in messages %}
         <p style="color:red;">{{ message }}</p>
@@ -50,4 +101,5 @@
     statusField.addEventListener("change", toggleCamposExtras);
     document.addEventListener("DOMContentLoaded", toggleCamposExtras);
 </script>
+
 {% endblock %}

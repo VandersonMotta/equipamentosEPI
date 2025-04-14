@@ -6,7 +6,7 @@ urlpatterns = [
     path('cadastrar_colaborador/', views.cadastrar_colaborador),
     path('sucesso/', views.sucesso),
     path('cadastrar_epi/', views.cadastrar_epi),
-    path('cadastro_epi_sucesso/', views.cadastro_epi_sucesso),
+    path('cadastro_epi_sucesso/', views.cadastro_epi_sucesso, name= 'cadastro_epi_sucesso'),
     path('registrar/', views.registrar),
     path('registro_sucesso/', views.registro_sucesso, name= 'registro_sucesso'),
     path('listar_colaboradores/', views.listar_colaboradores, name= 'listar_colaboradores'),

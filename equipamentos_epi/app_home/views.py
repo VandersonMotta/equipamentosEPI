@@ -91,10 +91,12 @@ def cadastrar_epi(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'EPI cadastrado com sucesso!')
-            return redirect(cadastrar_epi)  
+            form = EPIForm()  # limpa o formulário depois do cadastro
     else:
         form = EPIForm()
+    
     return render(request, 'app_home/pages/cadastrar_epi.html', {'form': form})
+
 
 def registrar (request):
     if request.method == 'POST':

@@ -12,12 +12,23 @@ class EPIForm(forms.ModelForm):
     class Meta:
         model = EPI
         fields = ['nomeEPI', 'descricao', 'validade', 'quantidade_disponivel', 'codigo']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['validade'].widget.attrs.update({'placeholder': 'AAAA-MM-DD'})
  
-class RegistrarForm (forms.ModelForm):
+class RegistrarForm(forms.ModelForm):
     class Meta:
         model = Registrar
-        fields = ['equipamento', 'colaborador', 'status','condicao_equipamento','observacao','data_devolucao','data_emprestimo','data_prevista_da_devolucao']
-      
+        fields = ['equipamento', 'colaborador', 'status', 'condicao_equipamento', 'observacao', 'data_devolucao', 'data_emprestimo', 'data_prevista_da_devolucao']
+
+    equipamento = forms.ModelChoiceField(queryset=EPI.objects.all(), empty_label="Selecione o EPI")
+    colaborador = forms.ModelChoiceField(queryset=Colaborador.objects.all(), empty_label="Selecione o Colaborador")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['status'].choices = [('', 'Selecionar status')] + list(Registrar.STATUS_CHOICES)
+
     def clean(self):
         cleaned_data = super().clean()
         status = cleaned_data.get('status')
