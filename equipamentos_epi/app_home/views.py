@@ -91,7 +91,7 @@ def cadastrar_epi(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'EPI cadastrado com sucesso!')
-            form = EPIForm()  # limpa o formulário depois do cadastro
+            form = EPIForm()  
     else:
         form = EPIForm()
     

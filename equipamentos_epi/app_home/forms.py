@@ -2,6 +2,8 @@ from django import forms
 from .models import Colaborador
 from .models import EPI
 from .models import Registrar
+from datetime import date, datetime
+from django.core.exceptions import ValidationError
 
 class ColaboradorForm(forms.ModelForm):
     class Meta: 
@@ -25,9 +27,34 @@ class RegistrarForm(forms.ModelForm):
     equipamento = forms.ModelChoiceField(queryset=EPI.objects.all(), empty_label="Selecione o EPI")
     colaborador = forms.ModelChoiceField(queryset=Colaborador.objects.all(), empty_label="Selecione o Colaborador")
 
+    data_emprestimo = forms.DateField(
+        widget=forms.TextInput(attrs={'placeholder': 'aaaa-mm-dd'})
+    )
+    data_devolucao = forms.DateField(
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'aaaa-mm-dd'})
+    )
+    data_prevista_da_devolucao = forms.DateField(
+        widget=forms.TextInput(attrs={'placeholder': 'aaaa-mm-dd'})
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['status'].choices = [('', 'Selecionar status')] + list(Registrar.STATUS_CHOICES)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        status = cleaned_data.get('status')
+        observacao = cleaned_data.get('observacao')
+        datadevolucao = cleaned_data.get('data_devolucao')
+        data_emprestimo = cleaned_data.get('data_emprestimo')
+        data_prevista = cleaned_data.get('data_prevista_da_devolucao')
+
+    def clean_data_prevista_da_devolucao(self):
+        data_prevista = self.cleaned_data.get('data_prevista_da_devolucao')
+        if data_prevista <= date.today():
+            raise ValidationError("A data prevista para devolução deve ser posterior à data atual.")
+        return data_prevista
 
     def clean(self):
         cleaned_data = super().clean()
