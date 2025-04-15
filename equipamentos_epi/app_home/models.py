@@ -31,10 +31,22 @@ class Registrar(models.Model):
         ('perdido', 'Perdido'),
     ]
 
+    CONDICOES_CHOICES = [
+        ('bom', 'Bom Estado'),
+        ('usado_bom', 'Usado'),
+        ('manutencao', 'Em Manutenção'),
+        ('quebrado', 'Quebrado/Danificado'),
+        ('indisponivel', 'Indisponível'),
+        ('vencido', 'Vencido'),
+        ('aguardando_substituicao', 'Aguardando Substituição'),
+        ('contaminado', 'Contaminado'),
+        ('descartabilidade', 'Em Descartabilidade'),
+    ]
+
     equipamento = models.ForeignKey(EPI, on_delete=models.CASCADE, related_name='registros')
     colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE, related_name='registros')
     status = models.CharField(max_length=100, choices=STATUS_CHOICES)
-    condicao_equipamento = models.CharField(max_length=100)
+    condicao_equipamento = models.CharField(max_length=100, choices=CONDICOES_CHOICES)
     observacao = models.CharField(max_length=100, blank=True, null=True)
     data_devolucao = models.DateField(blank=True, null=True)
     data_emprestimo = models.DateField()

@@ -38,6 +38,12 @@ class RegistrarForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'aaaa-mm-dd'})
     )
 
+    condicao_equipamento = forms.ChoiceField(
+        choices=[('', 'Selecionar condição')] + Registrar.CONDICOES_CHOICES,
+        widget=forms.Select,
+        label="Condição do Equipamento"
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['status'].choices = [('', 'Selecionar status')] + list(Registrar.STATUS_CHOICES)
@@ -67,3 +73,5 @@ class RegistrarForm(forms.ModelForm):
                 self.add_error('observacao', 'Item não foi cadastrado: preencher campo observação.')
             if not datadevolucao:
                 self.add_error('data_devolucao', 'Item não foi cadastrado: preencher campo data de devolução.')
+
+ 
