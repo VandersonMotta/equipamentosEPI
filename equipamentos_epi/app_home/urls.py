@@ -14,6 +14,7 @@ urlpatterns = [
     path('excluir_colaborador/<int:id>/', views.excluir_colaborador, name='excluir_colaborador'),
     path('listar_epi/', views.listar_epi, name= 'listar_epi'),
     path('editar_epi/<int:id>/', views.editar_epi, name= 'editar_epi'),
-    path('excluir_epi/<int:id>/', views.excluir_epi, name= 'excluir_epi')
+    path('excluir_epi/<int:id>/', views.excluir_epi, name= 'excluir_epi'),
+    path('listar_registro_relatorio/', views.listar_registro_relatorio, name= 'listar_registro_relatorio'),
 ]
 

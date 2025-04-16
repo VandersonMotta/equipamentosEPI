@@ -5,6 +5,7 @@ from .forms import RegistrarForm
 from django.contrib import messages
 from .models import Colaborador
 from .models import EPI
+from .models import Registrar
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -114,3 +115,7 @@ def registrar (request):
 
 def registro_sucesso(request):
     return render(request,'app_home/pages/registro_sucesso.html')
+
+def listar_registro_relatorio(request):
+    registros = Registrar.objects.all()
+    return render(request, 'app_home/pages/listar_registro_relatorio.html', {'registros': registros})
