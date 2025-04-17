@@ -117,9 +117,33 @@ def registro_sucesso(request):
     return render(request,'app_home/pages/registro_sucesso.html')
 
 def listar_registro_relatorio(request):
-    registros = Registrar.objects.all()
-    return render(request, 'app_home/pages/listar_registro_relatorio.html', {'registros': registros})
+    termo_busca = request.GET.get('busca', '')
+
+    if termo_busca:
+        registros = Registrar.objects.filter(
+            colaborador__nome__icontains=termo_busca
+        )
+    else:
+        registros = Registrar.objects.all()
+
+    return render(request, 'app_home/pages/listar_registro_relatorio.html', {
+        'registros': registros,
+        'termo_busca': termo_busca,
+    })
+
 
 def relatorio_colaborador(request):
-    registros = Registrar.objects.filter(status='emprestado')
-    return render(request, 'app_home/pages/relatorio_colaborador.html', {'registros': registros})
+    termo_busca = request.GET.get('busca', '')
+    
+    if termo_busca:
+        registros = Registrar.objects.filter(
+            status='emprestado',
+            colaborador__nome__icontains=termo_busca
+        )
+    else:
+        registros = Registrar.objects.filter(status='emprestado')
+        
+    return render(request, 'app_home/pages/relatorio_colaborador.html', {
+        'registros': registros,
+        'termo_busca': termo_busca,
+    })

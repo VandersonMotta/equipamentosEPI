@@ -1,6 +1,14 @@
 {% extends 'app_home/pages/home.html' %}
 {% block content %}
 <h2>Relatório de Empréstimos por Colaborador</h2>
+
+<form method="GET" class="w3-margin-bottom">
+    <input type="text" name="busca" placeholder="Buscar por Colaborador..." value="{{ termo_busca }}">
+    <button class="w3-button w3-blue w3-margin-top" type="submit">
+        <i class="fa fa-search"></i> Buscar
+    </button>
+</form>
+
 <table class="w3-table-all w3-hoverable">
     <thead>
         <tr class="w3-light-grey">
