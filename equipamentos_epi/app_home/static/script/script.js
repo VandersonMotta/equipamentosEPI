@@ -27,3 +27,20 @@ document.querySelectorAll(".panel a").forEach(item => {
     });
 });
 
+const statusField = document.getElementById("id_status");
+const observacaoDiv = document.getElementById("div-observacao");
+const devolucaoDiv = document.getElementById("div-devolucao");
+
+function toggleCamposExtras() {
+    const valor = statusField.value;
+    if (valor === "devolvido" || valor === "danificado" || valor === "perdido") {
+        observacaoDiv.style.display = "block";
+        devolucaoDiv.style.display = "block";
+    } else {
+        observacaoDiv.style.display = "none";
+        devolucaoDiv.style.display = "none";
+    }
+}
+
+statusField.addEventListener("change", toggleCamposExtras);
+document.addEventListener("DOMContentLoaded", toggleCamposExtras);

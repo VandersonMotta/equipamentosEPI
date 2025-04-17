@@ -4,7 +4,7 @@
     position: fixed;
     top: 50px;
     left: 0;
-    background-color: #133551;
+    background-color: #305072;
     padding-top: 20px;
     color: rgb(3, 10, 77);
     padding-left: 20px;
@@ -20,7 +20,7 @@
 .accordion {
     padding: 10px;
     font-size: 18px;
-    background-color: #3B70A2;
+    background-color: #092f49;
     color: white;
     border: none;
     width: 100%;
@@ -30,22 +30,29 @@
 
 .sidebar li:hover,
 .accordion:hover {
-    background-color: #0B2B40;
+    background-color: #6b8596;
 }
 
 .panel {
     display: none;
     padding: 0 18px;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     overflow: hidden;
     border-left: 3px solid;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     flex-direction: column;
+}
+
+.panel a {
+    display: block;         
+    margin-bottom: 5px;   
+    text-decoration: none; 
+    padding: 5px 0;  
 }
 
 .navbar {
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #000000;
     color: white;
     display: flex;
@@ -58,11 +65,12 @@
     z-index: 1000;
 }
 
-.navbar-left,
+.navbar-left a,
 .navbar-right {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 25px;
+    text-decoration: none; 
 }
 
 .img {
@@ -83,8 +91,16 @@
     margin-left: 250px; 
     padding-top: 50px;  
     min-height: 100vh;
-    box-sizing: border-box;
+    border-top: none;
 }
+
+.main-content {
+    background-color: #F1EFEC;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+}
+
 
 form {
     max-width: 600px;           
@@ -104,7 +120,7 @@ form input, form select, form textarea {
 }
 
 form button {
-    background-color: #0B2B40;  
+    background-color: #000000;  
     color: white;              
     padding: 12px 20px;          
     border: none;              
