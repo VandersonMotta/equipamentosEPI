@@ -119,3 +119,7 @@ def registro_sucesso(request):
 def listar_registro_relatorio(request):
     registros = Registrar.objects.all()
     return render(request, 'app_home/pages/listar_registro_relatorio.html', {'registros': registros})
+
+def relatorio_colaborador(request):
+    registros = Registrar.objects.filter(status='emprestado')
+    return render(request, 'app_home/pages/relatorio_colaborador.html', {'registros': registros})

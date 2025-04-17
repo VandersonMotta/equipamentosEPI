@@ -16,5 +16,6 @@ urlpatterns = [
     path('editar_epi/<int:id>/', views.editar_epi, name= 'editar_epi'),
     path('excluir_epi/<int:id>/', views.excluir_epi, name= 'excluir_epi'),
     path('listar_registro_relatorio/', views.listar_registro_relatorio, name= 'listar_registro_relatorio'),
+    path('relatorio_colaborador/', views.relatorio_colaborador, name= 'relatorio_colaborador'),
 ]
 
