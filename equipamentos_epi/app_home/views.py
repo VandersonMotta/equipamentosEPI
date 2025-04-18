@@ -147,3 +147,6 @@ def relatorio_colaborador(request):
         'registros': registros,
         'termo_busca': termo_busca,
     })
+
+def perfil(request):
+    return render(request, 'app_home/pages/perfil.html')

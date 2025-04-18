@@ -1,3 +1,4 @@
+/*ESTILO DA BARRA LATERAL ESQUERDA*/
 .sidebar {
     height: 100%;
     width: 250px;
@@ -19,10 +20,10 @@
 .sidebar li,
 .accordion {
     padding: 10px;
-    font-size: 18px;
+    font-size: 20px;
     background-color: #092f49;
     color: white;
-    border: none;
+    border:none;
     width: 100%;
     text-align: left;
     cursor: pointer;
@@ -30,7 +31,8 @@
 
 .sidebar li:hover,
 .accordion:hover {
-    background-color: #6b8596;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .panel {
@@ -57,6 +59,7 @@
     color: black;
 }
 
+/*ESTILO DA BARRA HOME*/
 .navbar {
     width: 100%;
     height: 60px;
@@ -87,6 +90,8 @@
     border-radius: 200px;
     margin-left: 15px;
     vertical-align: middle;
+    width: 40px;
+    height: 40px;
 }
 
 .dropdown-content {
@@ -128,6 +133,7 @@
     border-top: none;
 }
 
+/*ESTILO DE FUNDO DA PAGINA*/
 .main-content {
     background-color: #F1EFEC;
     min-height: 100vh;
@@ -135,7 +141,7 @@
     padding: 20px;
 }
 
-
+/*ESTILO DOS FORMULARIOS*/
 form {
     max-width: 600px;           
     margin: 20px auto;         
@@ -171,3 +177,84 @@ form button:hover {
 form p {             
     margin: 5px 0;
 }
+
+/*ESTILO DO HTML PERFIL*/
+body {
+    background-color: #F1EFEC;  
+    margin: 10;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.perfil-info {
+    display: flex;                
+    align-items: center;          
+    gap: 20px;                     
+}
+
+.perfil-foto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;        
+}
+
+.perfil-dados p {
+    font-size: 25px;             
+    margin: 10px 0;             
+}
+
+/* BARRA LATERAL DIREITA PERSONALIZADA */
+.perfil-sidebar-direita {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #344C64;
+    padding-top: 70px; 
+    padding-left: 20px;
+    z-index: 9999; 
+    color: white;
+}
+
+.perfil-sidebar-direita ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.perfil-sidebar-direita li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.perfil-sidebar-direita li:hover {
+    background-color: #000000;
+}
+
+.sidebar-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-button:link,
+.sidebar-button:visited {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar-button i {
+    margin-right: 8px;
+    color: white;
+}
+
+
+
