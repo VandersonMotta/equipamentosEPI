@@ -44,3 +44,17 @@ function toggleCamposExtras() {
 
 statusField.addEventListener("change", toggleCamposExtras);
 document.addEventListener("DOMContentLoaded", toggleCamposExtras);
+
+function toggleUserMenu() {
+    const menu = document.getElementById("user-dropdown");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+window.addEventListener("click", function (e) {
+    const dropdown = document.getElementById("user-dropdown");
+    const userMenu = document.querySelector(".user-menu");
+
+    if (!userMenu.contains(e.target)) {
+        dropdown.style.display = "none";
+    }
+});
