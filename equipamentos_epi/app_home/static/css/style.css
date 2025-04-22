@@ -5,9 +5,9 @@
     position: fixed;
     top: 50px;
     left: 0;
-    background-color: #344C64;
+    background-color: #445D48;
     padding-top: 20px;
-    color: rgb(3, 10, 77);
+    color:rgb(0, 0, 0);
     padding-left: 20px;
     z-index: 999;
 }
@@ -21,7 +21,7 @@
 .accordion {
     padding: 10px;
     font-size: 20px;
-    background-color: #092f49;
+    background-color:rgb(55, 68, 51);
     color: white;
     border:none;
     width: 100%;
@@ -31,8 +31,8 @@
 
 .sidebar li:hover,
 .accordion:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
 }
 
 .panel {
@@ -55,7 +55,7 @@
 }
 
 .panel a:hover {
-    background-color: #F1EFEC;    
+    background-color: #DBCC95;    
     color: black;
 }
 
@@ -114,8 +114,7 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #6b8596;    
-    color: white;
+    background-color: #DBCC95;    
 }
 
 .navbar li {
@@ -135,17 +134,26 @@
 
 /*ESTILO DE FUNDO DA PAGINA*/
 .main-content {
-    background-color: #F1EFEC;
-    min-height: 100vh;
-    width: 100%;
+    min-height: 92.5vh;  
     padding: 20px;
+    background-image: url("https://i.pinimg.com/736x/3d/99/8c/3d998c3767292b9317da7faba21a8a8f.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 42px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
 }
 
 /*ESTILO DOS FORMULARIOS*/
 form {
     max-width: 600px;           
     margin: 20px auto;         
-    background-color: rgb(94, 119, 145); 
+    background-color: #DBCC95; 
     padding: 20px;             
     border-radius: 8px;        
 }
@@ -160,18 +168,19 @@ form input, form select, form textarea {
 }
 
 form button {
-    background-color: #000000;  
+    background-color: #445D48;  
     color: white;              
     padding: 12px 20px;          
     border: none;              
     border-radius: 4px;         
     cursor: pointer;           
     width: 100%;                 
-    font-size: 16px;             
+    font-size: 20px;             
 }
 
 form button:hover {
-    background-color: #092f49;   
+    background-color:rgb(0, 0, 0);   
+    color: white;
 }
 
 form p {             
@@ -180,7 +189,7 @@ form p {
 
 /*ESTILO DO HTML PERFIL*/
 body {
-    background-color: #F1EFEC;  
+    background-color: #F4F8D3;  
     margin: 10;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -211,7 +220,7 @@ body {
     right: 0;
     width: 250px;
     height: 100vh;
-    background-color: #344C64;
+    background-color: #445D48;
     padding-top: 70px; 
     padding-left: 20px;
     z-index: 9999; 
