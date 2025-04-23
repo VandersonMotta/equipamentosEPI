@@ -2,9 +2,11 @@
 {% block content %}
 <h2>Relatório de Empréstimos por Colaborador</h2>
 
-<form method="GET" class="w3-margin-bottom">
-    <input type="text" name="busca" placeholder="Buscar por Colaborador..." value="{{ termo_busca }}">
-    <button class="w3-button w3-blue w3-margin-top" type="submit">
+<!-- Formulário de busca -->
+<form method="get" action="" class="w3-margin-bottom">
+    <input class="input-busca" type="text" name="busca" placeholder="Buscar colaborador ou equipamento..."
+        value="{{ termo_busca }}">
+    <button class="botao-busca" type="submit">
         <i class="fa fa-search"></i> Buscar
     </button>
 </form>
@@ -15,6 +17,8 @@
             <th>Colaborador</th>
             <th>Equipamento</th>
             <th>Data de Empréstimo</th>
+            <th>Data Prevista de Devolução</th>
+            <th>Status do Empréstimo</th>
         </tr>
     </thead>
     <tbody>
@@ -23,10 +27,12 @@
             <td>{{ registro.colaborador }}</td>
             <td>{{ registro.equipamento }}</td>
             <td>{{ registro.data_emprestimo }}</td>
+            <td>{{ registro.data_prevista_da_devolucao }}</td>
+            <td>{{ registro.status }}</td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="3">Desculpe, mas não encontramos dados correspondentes a sua busca.</td>
+            <td colspan="5">Desculpe, mas não encontramos dados correspondentes à sua busca.</td>
         </tr>
         {% endfor %}
     </tbody>
