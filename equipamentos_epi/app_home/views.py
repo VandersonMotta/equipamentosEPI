@@ -44,17 +44,26 @@ def editar_colaborador(request, id):
         form = ColaboradorForm(instance=colaborador)    
     return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
 
-def editar_acao(request, id):
-    Epi = get_object_or_404(EPI, id=id)
-    if request.method == 'POST':
-        form = RegistrarForm(request.POST, instance=Epi)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_registro_relatorio')
-    else:
-        form = RegistrarForm(instance=Epi)
-    return render(request, 'app_home/pages/#', {'form': form})
+def editar_status(request, id):
+    registro = get_object_or_404(Registrar, id=id)
 
+    if request.method == 'POST':
+        # Só atualiza o campo status
+        status_atualizado = request.POST.get('status')
+        registro.status = status_atualizado
+        registro.save()
+
+        messages.success(request, 'Status atualizado com sucesso!')
+
+        # Redireciona para o relatório certo
+        return redirect('relatorio_colaborador')
+    else:
+        form = RegistrarForm(instance=registro)
+
+    return render(request, 'app_home/pages/editar_status.html', {
+        'form': form,
+        'registro': registro  # Passar o objeto para mostrar dados
+    })
 
 def excluir_epi(request, id):
     epi = get_object_or_404(EPI, id=id)

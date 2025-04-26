@@ -18,5 +18,6 @@ urlpatterns = [
     path('listar_registro_relatorio/', views.listar_registro_relatorio, name= 'listar_registro_relatorio'),
     path('relatorio_colaborador/', views.relatorio_colaborador, name= 'relatorio_colaborador'),
     path('perfil/', views.perfil),
+    path('editar_status/<int:id>/', views.editar_status, name='editar_status'),
 ]
 

@@ -19,6 +19,7 @@
             <th>Data de Empréstimo</th>
             <th>Data Prevista de Devolução</th>
             <th>Status do Empréstimo</th>
+            <th>Ação</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,11 @@
             <td>{{ registro.data_emprestimo }}</td>
             <td>{{ registro.data_prevista_da_devolucao }}</td>
             <td>{{ registro.status }}</td>
+            <td>
+                <a href="{% url 'editar_status' registro.id %}" class="w3-button w3-blue w3-small">
+                    <i class="fa fa-pencil"></i> Editar
+                </a>                
+            </td>
         </tr>
         {% empty %}
         <tr>
