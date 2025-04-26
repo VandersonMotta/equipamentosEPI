@@ -44,6 +44,18 @@ def editar_colaborador(request, id):
         form = ColaboradorForm(instance=colaborador)    
     return render(request, 'app_home/pages/editar_colaborador.html', {'form': form})
 
+def editar_acao(request, id):
+    Epi = get_object_or_404(EPI, id=id)
+    if request.method == 'POST':
+        form = RegistrarForm(request.POST, instance=Epi)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_registro_relatorio')
+    else:
+        form = RegistrarForm(instance=Epi)
+    return render(request, 'app_home/pages/#', {'form': form})
+
+
 def excluir_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
     epi.delete()
