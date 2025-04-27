@@ -42,12 +42,11 @@
                 <td>{{ equipamentos.quantidade_disponivel }}</td>
                 <td>{{ equipamentos.codigo }}</td>
                 <td>
-                    <a href="{% url 'editar_epi' equipamentos.id %}" class="w3-button w3-blue w3-small">
-                        <i class="fa fa-pencil"></i> Editar
+                    <a href="{% url 'editar_epi' equipamentos.id %}" class="botao-edit">
+                      Editar
                     </a>
-                    <a href="{% url 'excluir_epi' equipamentos.id %}" class="w3-button w3-red w3-small"
-                        onclick="return confirm('Tem certeza que deseja excluir {{ equipamentos.nomeEPI }}?')">
-                        <i class="fa fa-trash"></i> Excluir
+                    <a href="{% url 'excluir_epi' equipamentos.id %}" class="botao-exclui" onclick="return confirm('Tem certeza que deseja excluir {{ equipamentos.nomeEPI }}?')">
+                      Excluir
                     </a>
                 </td>
             </tr>

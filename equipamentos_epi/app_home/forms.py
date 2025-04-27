@@ -53,20 +53,6 @@ class RegistrarForm(forms.ModelForm):
         status = cleaned_data.get('status')
         observacao = cleaned_data.get('observacao')
         datadevolucao = cleaned_data.get('data_devolucao')
-        data_emprestimo = cleaned_data.get('data_emprestimo')
-        data_prevista = cleaned_data.get('data_prevista_da_devolucao')
-
-    def clean_data_prevista_da_devolucao(self):
-        data_prevista = self.cleaned_data.get('data_prevista_da_devolucao')
-        if data_prevista <= date.today():
-            raise ValidationError("A data prevista para devolução deve ser posterior à data atual.")
-        return data_prevista
-
-    def clean(self):
-        cleaned_data = super().clean()
-        status = cleaned_data.get('status')
-        observacao = cleaned_data.get('observacao')
-        datadevolucao = cleaned_data.get('data_devolucao')
 
         if status in ['devolvido', 'danificado', 'perdido']:
             if not observacao:
@@ -74,4 +60,8 @@ class RegistrarForm(forms.ModelForm):
             if not datadevolucao:
                 self.add_error('data_devolucao', 'Item não foi cadastrado: preencher campo data de devolução.')
 
- 
+        data_prevista = cleaned_data.get('data_prevista_da_devolucao')
+        if data_prevista and data_prevista <= date.today():
+            raise ValidationError("A data prevista para devolução deve ser posterior à data atual.")
+
+        return cleaned_data

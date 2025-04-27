@@ -21,7 +21,6 @@
             <th>Data Prevista</th>
             <th>Data Devolução</th>
             <th>Observação</th>
-            <th>Ação</th>
         </tr>
     </thead>
     <tbody>
@@ -35,11 +34,6 @@
             <td>{{ registro.data_prevista_da_devolucao }}</td>
             <td>{{ registro.data_devolucao|default:"" }}</td>
             <td>{{ registro.observacao|default:"" }}</td>
-            <td>
-                <a href="#" class="w3-button w3-blue w3-small">
-                    <i class="fa fa-pencil"></i> Editar
-                </a>
-            </td>
         </tr>
         {% empty %}
         <tr>

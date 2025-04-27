@@ -1,0 +1,34 @@
+/* BOTÃO EDITAR */
+.botao-edit {
+    background-color: #638889; 
+    color: white;
+    padding: 5px 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-top: 5px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.botao-edit:hover {
+    background-color: #000000; 
+}
+
+/* BOTÃO EXCLUIR */
+.botao-exclui {
+    background-color: #A94A4A;
+    color: white;
+    padding: 5px 13px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.botao-exclui:hover {
+    background-color: #010101; 
+}

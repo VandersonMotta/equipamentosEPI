@@ -30,11 +30,7 @@
         {{ form.status }}
     </div>
 
-    <button type="submit" class="w3-button w3-green">
-        <i class="fa fa-save"></i> Salvar
-    </button>
-    <a href="{% url 'relatorio_colaborador' %}" class="w3-button w3-grey">
-        Cancelar
-    </a>
+    <button type="submit" class="botao-busca">Salvar</button><br>
+    <a href="{% url 'relatorio_colaborador' %}" class="botao-can">Cancelar</a>
 </form>
 {% endblock %}
