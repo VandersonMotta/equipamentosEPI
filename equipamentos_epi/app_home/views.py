@@ -142,7 +142,7 @@ def listar_registro_relatorio(request):
 
     if termo_busca:
         registros = Registrar.objects.filter(
-            colaborador__nome__icontains=termo_busca
+           colaborador__nome__icontains=termo_busca
         )
     else:
         registros = Registrar.objects.all()
