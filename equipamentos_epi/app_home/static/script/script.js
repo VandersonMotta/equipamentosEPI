@@ -42,6 +42,25 @@ function toggleCamposExtras() {
     }
 }
 
+// Função para alternar o menu suspenso
+function toggleUserMenu() {
+    var dropdown = document.getElementById("user-dropdown");
+    dropdown.classList.toggle("show");
+}
+
+// Fechar o menu suspenso se o usuário clicar fora dele
+window.onclick = function(event) {
+    if (!event.target.matches('.navbar-right, .navbar-right *')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
 /*GRAFICO*/
 // Função para configurar o gráfico
 function createChart(epiData) {

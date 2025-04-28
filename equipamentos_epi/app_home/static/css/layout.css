@@ -45,3 +45,85 @@
     width: 300px;
     text-align: center;
 }
+
+h4 {
+    margin-top: 30px;
+    text-align: center;
+    color: #000000;
+    font-size: 25px;
+}
+
+/* SECTION PRINCIPAL DA HOME */
+.descrição {
+    margin-top: 30px;
+    display: flex; 
+    justify-content: flex-start; 
+}
+
+.descrição p {
+    flex: 1; 
+    margin: 0; 
+    color: #000000;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.boas-vindas h3 {
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 30px;
+    font-size: 30px;
+    color: #445D48;
+}
+
+.descrição img {
+    max-width: 400px; 
+    height: auto; 
+    border-radius: 8px; 
+    margin-left: 20px; 
+    margin-right: 20PX;
+}
+
+/* ARTICLE DOS EPIS */
+.epi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    margin: 10px auto;
+    width: 80%;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.epi-item {
+    background-color: #DBCC95;
+    display: flex;
+    flex-direction: column; 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease; 
+    height: 250px; 
+    width: 300px;
+    margin: 0 auto; 
+    margin-top: 20px;
+}
+
+.epi-item:hover {
+    transform: scale(1.05);
+}
+
+.epi-item h3 {
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+    color: #445D48;
+}
+
+.epi-item p {
+    font-size: 1.0em;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+}

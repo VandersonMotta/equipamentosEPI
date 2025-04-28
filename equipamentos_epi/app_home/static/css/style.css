@@ -106,6 +106,10 @@
     border-radius: 5px;        
 }
 
+.dropdown-content.show {
+    display: block;
+}
+
 .dropdown-content a {
     color: black;              
     padding: 12px 16px;       
@@ -134,19 +138,13 @@
 
 /*ESTILO DE FUNDO DA PAGINA*/
 .main-content {
-    min-height: 92.5vh;  
-    padding: 20px;
-    background-image: url("https://i.pinimg.com/736x/3d/99/8c/3d998c3767292b9317da7faba21a8a8f.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #F4F8D3;
 }
 
 h2 {
     text-align: center;
-    color: white;
-    font-size: 42px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+    color: #000000;
+    font-size: 42px; 
 }
 
 /*ESTILO DOS FORMULARIOS*/
