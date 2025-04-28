@@ -6,6 +6,9 @@ from django.contrib import messages
 from .models import Colaborador
 from .models import EPI
 from .models import Registrar
+from .models import Aviso
+from datetime import date, timedelta
+from django.utils.timezone import now
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -195,13 +198,11 @@ def perfil(request):
     return render(request, 'app_home/pages/perfil.html')
 
 def visualizar_quantidade_epi(request):
-    # Obtendo todos os EPIs, incluindo aqueles sem registros
+
     epi_data = EPI.objects.all()
 
-    # Transformando os dados do QuerySet em um formato serializável (lista de dicionários)
     epi_data_serialized = []
     for epi in epi_data:
-        # Contando os registros de cada status, incluindo EPIs sem registros (contagem será zero)
         status_counts = {
             'emprestado': epi.registros.filter(status='emprestado').count(),
             'em_uso': epi.registros.filter(status='em_uso').count(),
@@ -217,5 +218,43 @@ def visualizar_quantidade_epi(request):
             'status_counts': status_counts,
         })
 
-    # Passando os dados serializados para o template
     return render(request, 'app_home/pages/visualizar_quantidade_epi.html', {'epi_data': epi_data_serialized})
+
+def avisos(request):
+    total_epis = EPI.objects.count()
+    total_colaboradores = Colaborador.objects.count()
+
+    epis_a_devolver = Registrar.objects.filter(
+        status__in=['emprestado', 'em_uso'],
+        data_devolucao__isnull=True
+    ).count()
+
+    avisos = Aviso.objects.all()
+
+    hoje = date.today()
+    amanha = hoje + timedelta(days=1)
+
+    registros_para_avisar = Registrar.objects.filter(
+        status__in=['emprestado', 'em_uso'],
+        data_prevista_da_devolucao__in=[hoje, amanha]
+    )
+
+    avisos_automaticos = []
+
+    for registro in registros_para_avisar:
+        titulo = "Devolução de EPI Pendente"
+        mensagem = f"O EPI '{registro.equipamento.nomeEPI}' emprestado para '{registro.colaborador.nome}' deve ser devolvido em {registro.data_prevista_da_devolucao.strftime('%d/%m/%Y')}."
+        avisos_automaticos.append({
+            'titulo': titulo,
+            'mensagem': mensagem,
+            'data_criacao': registro.data_prevista_da_devolucao
+        })
+
+    context = {
+        'total_epis': total_epis,
+        'total_colaboradores': total_colaboradores,
+        'epis_a_devolver': epis_a_devolver,
+        'avisos': list(avisos) + avisos_automaticos, 
+    }
+
+    return render(request, 'app_home/pages/avisos.html', context)

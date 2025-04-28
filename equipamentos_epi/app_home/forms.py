@@ -3,6 +3,7 @@ from .models import Colaborador
 from .models import EPI
 from .models import Registrar
 from datetime import date, datetime
+from .models import Aviso
 from django.core.exceptions import ValidationError
 
 class ColaboradorForm(forms.ModelForm):

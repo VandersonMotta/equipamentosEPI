@@ -20,5 +20,6 @@ urlpatterns = [
     path('perfil/', views.perfil),
     path('editar_status/<int:id>/', views.editar_status, name='editar_status'),
     path('visualizar_quantidade_epi/', views.visualizar_quantidade_epi, name= 'visualizar_quantidade_epi'),
+    path('avisos/', views.avisos, name= 'avisos'),
 ]
 
