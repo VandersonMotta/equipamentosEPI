@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,33 +13,35 @@
 <body>
     <h2>Quantidade de EPI por Status</h2>
 
-    <!-- Exibindo uma visualização simples dos dados para verificação -->
-    <div id="epi-data-preview">
-        {% for epi in epi_data %}
-            <h3>{{ epi.nomeEPI }}</h3>
-            <p>Quantidade disponível: {{ epi.quantidade_disponivel }}</p>
-            <ul>
-                <li>Emprestado: {{ epi.status_counts.emprestado|default:"0" }}</li>
-                <li>Em Uso: {{ epi.status_counts.em_uso|default:"0" }}</li>
-                <li>Fornecido: {{ epi.status_counts.fornecido|default:"0" }}</li>
-                <li>Devolvido: {{ epi.status_counts.devolvido|default:"0" }}</li>
-                <li>Danificado: {{ epi.status_counts.danificado|default:"0" }}</li>
-                <li>Perdido: {{ epi.status_counts.perdido|default:"0" }}</li>
-            </ul>
-        {% endfor %}
-    </div>
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr>
+                <th>Nome do EPI</th>
+                <th>Quantidade Disponível</th>
+                <th>Emprestado</th>
+                <th>Em Uso</th>
+                <th>Fornecido</th>
+                <th>Devolvido</th>
+                <th>Danificado</th>
+                <th>Perdido</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for epi in epi_data %}
+            <tr>
+                <td>{{ epi.nomeEPI }}</td>
+                <td>{{ epi.quantidade_disponivel }}</td>
+                <td>{{ epi.status_counts.emprestado|default:"0" }}</td>
+                <td>{{ epi.status_counts.em_uso|default:"0" }}</td>
+                <td>{{ epi.status_counts.fornecido|default:"0" }}</td>
+                <td>{{ epi.status_counts.devolvido|default:"0" }}</td>
+                <td>{{ epi.status_counts.danificado|default:"0" }}</td>
+                <td>{{ epi.status_counts.perdido|default:"0" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <!-- Container para o gráfico -->
-    <div id="chart-container">
-        <canvas id="epiChart"></canvas>
-    </div>
-
-    <!-- Usar json_script para passar os dados do Django para o JavaScript -->
-    <script id="epi-data" type="application/json">
-        {{ epi_data|json_script:"epi_data" }}
-    </script>
-
-    <!-- Link para o arquivo externo de JavaScript -->
     <script src="{% static 'script/script.js' %}"></script>
 </body>
 

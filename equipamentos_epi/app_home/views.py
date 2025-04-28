@@ -6,8 +6,6 @@ from django.contrib import messages
 from .models import Colaborador
 from .models import EPI
 from .models import Registrar
-from django.db.models import Count
-
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -197,11 +195,27 @@ def perfil(request):
     return render(request, 'app_home/pages/perfil.html')
 
 def visualizar_quantidade_epi(request):
-    # Obtendo dados dos EPI com seus respectivos registros de status
+    # Obtendo todos os EPIs, incluindo aqueles sem registros
     epi_data = EPI.objects.all()
 
     # Transformando os dados do QuerySet em um formato serializável (lista de dicionários)
-    epi_data_serialized = list(epi_data.values('nomeEPI', 'quantidade_disponivel', 'descricao'))
+    epi_data_serialized = []
+    for epi in epi_data:
+        # Contando os registros de cada status, incluindo EPIs sem registros (contagem será zero)
+        status_counts = {
+            'emprestado': epi.registros.filter(status='emprestado').count(),
+            'em_uso': epi.registros.filter(status='em_uso').count(),
+            'fornecido': epi.registros.filter(status='fornecido').count(),
+            'devolvido': epi.registros.filter(status='devolvido').count(),
+            'danificado': epi.registros.filter(status='danificado').count(),
+            'perdido': epi.registros.filter(status='perdido').count(),
+        }
+        epi_data_serialized.append({
+            'nomeEPI': epi.nomeEPI,
+            'quantidade_disponivel': epi.quantidade_disponivel,
+            'descricao': epi.descricao,
+            'status_counts': status_counts,
+        })
 
     # Passando os dados serializados para o template
     return render(request, 'app_home/pages/visualizar_quantidade_epi.html', {'epi_data': epi_data_serialized})
