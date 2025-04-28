@@ -2,6 +2,15 @@
 {% block content %}
 <h2>Relatório de Empréstimos por Colaborador</h2>
 
+{% if messages %}
+{% for message in messages %}
+<div class="custom-alert alert alert-success alert-dismissible fade show" role="alert">
+    <span class="custom-alert-message">{{ message }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+</div>
+{% endfor %}
+{% endif %}
+
 <!-- Formulário de busca -->
 <form method="get" action="" class="w3-margin-bottom">
     <input class="input-busca" type="text" name="busca" placeholder="Buscar colaborador..." value="{{ termo_busca }}">
@@ -32,7 +41,7 @@
             <td>
                 <a href="{% url 'editar_status' registro.id %}" class="botao-edit">
                     Editar
-                </a>                
+                </a>
             </td>
         </tr>
         {% empty %}

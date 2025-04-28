@@ -32,3 +32,16 @@
 .botao-exclui:hover {
     background-color: #010101; 
 }
+
+/*GRAFICO*/
+#charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.epi-section {
+    width: 300px;
+    text-align: center;
+}

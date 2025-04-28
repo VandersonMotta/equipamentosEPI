@@ -19,5 +19,6 @@ urlpatterns = [
     path('relatorio_colaborador/', views.relatorio_colaborador, name= 'relatorio_colaborador'),
     path('perfil/', views.perfil),
     path('editar_status/<int:id>/', views.editar_status, name='editar_status'),
+    path('visualizar_quantidade_epi/', views.visualizar_quantidade_epi, name= 'visualizar_quantidade_epi'),
 ]
 

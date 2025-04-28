@@ -6,6 +6,8 @@ from django.contrib import messages
 from .models import Colaborador
 from .models import EPI
 from .models import Registrar
+from django.db.models import Count
+
 
 def home(request):
     return render(request, 'app_home/pages/home.html')
@@ -46,11 +48,23 @@ def editar_colaborador(request, id):
 
 def editar_status(request, id):
     registro = get_object_or_404(Registrar, id=id)
+    epi = registro.equipamento  
 
     if request.method == 'POST':
+        status_anterior = registro.status 
         status_atualizado = request.POST.get('status')
+
         registro.status = status_atualizado
         registro.save()
+
+        if status_anterior != 'devolvido' and status_atualizado == 'devolvido':
+            epi.quantidade_disponivel += 1
+            epi.save()
+
+        elif status_anterior == 'devolvido' and status_atualizado in ['emprestado', 'em_uso', 'fornecido', 'danificado', 'perdido']:
+            if epi.quantidade_disponivel > 0:
+                epi.quantidade_disponivel -= 1
+                epi.save()
 
         messages.success(request, 'Status atualizado com sucesso!')
 
@@ -62,6 +76,7 @@ def editar_status(request, id):
         'form': form,
         'registro': registro  
     })
+
 
 def excluir_epi(request, id):
     epi = get_object_or_404(EPI, id=id)
@@ -118,11 +133,21 @@ def cadastrar_epi(request):
     return render(request, 'app_home/pages/cadastrar_epi.html', {'form': form})
 
 
-def registrar (request):
+def registrar(request):
     if request.method == 'POST':
         form = RegistrarForm(request.POST)
         if form.is_valid():
-            form.save()
+            registro = form.save(commit=False)  
+            
+            if registro.status in ['emprestado', 'em_uso', 'fornecido', 'danificado', 'perdido']:
+                if registro.equipamento.quantidade_disponivel <= 0:
+                    messages.error(request, "Não há mais itens disponíveis para este EPI!")
+                    return render(request, 'app_home/pages/registrar.html', {'form': form})
+
+                registro.equipamento.quantidade_disponivel -= 1
+                registro.equipamento.save()
+
+            registro.save()  
             messages.success(request, 'Registrado com sucesso!')  
             return redirect(registrar)       
         else:        
@@ -131,6 +156,7 @@ def registrar (request):
         form = RegistrarForm()
 
     return render(request, 'app_home/pages/registrar.html', {'form': form})
+
 
 def registro_sucesso(request):
     return render(request,'app_home/pages/registro_sucesso.html')
@@ -169,3 +195,13 @@ def relatorio_colaborador(request):
 
 def perfil(request):
     return render(request, 'app_home/pages/perfil.html')
+
+def visualizar_quantidade_epi(request):
+    # Obtendo dados dos EPI com seus respectivos registros de status
+    epi_data = EPI.objects.all()
+
+    # Transformando os dados do QuerySet em um formato serializável (lista de dicionários)
+    epi_data_serialized = list(epi_data.values('nomeEPI', 'quantidade_disponivel', 'descricao'))
+
+    # Passando os dados serializados para o template
+    return render(request, 'app_home/pages/visualizar_quantidade_epi.html', {'epi_data': epi_data_serialized})

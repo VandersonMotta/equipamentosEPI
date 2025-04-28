@@ -1,0 +1,45 @@
+{% extends 'app_home/pages/home.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Quantidade de EPI</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h2>Quantidade de EPI por Status</h2>
+
+    <!-- Exibindo uma visualização simples dos dados para verificação -->
+    <div id="epi-data-preview">
+        {% for epi in epi_data %}
+            <h3>{{ epi.nomeEPI }}</h3>
+            <p>Quantidade disponível: {{ epi.quantidade_disponivel }}</p>
+            <ul>
+                <li>Emprestado: {{ epi.status_counts.emprestado|default:"0" }}</li>
+                <li>Em Uso: {{ epi.status_counts.em_uso|default:"0" }}</li>
+                <li>Fornecido: {{ epi.status_counts.fornecido|default:"0" }}</li>
+                <li>Devolvido: {{ epi.status_counts.devolvido|default:"0" }}</li>
+                <li>Danificado: {{ epi.status_counts.danificado|default:"0" }}</li>
+                <li>Perdido: {{ epi.status_counts.perdido|default:"0" }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+    <!-- Container para o gráfico -->
+    <div id="chart-container">
+        <canvas id="epiChart"></canvas>
+    </div>
+
+    <!-- Usar json_script para passar os dados do Django para o JavaScript -->
+    <script id="epi-data" type="application/json">
+        {{ epi_data|json_script:"epi_data" }}
+    </script>
+
+    <!-- Link para o arquivo externo de JavaScript -->
+    <script src="{% static 'script/script.js' %}"></script>
+</body>
+
+{% endblock %}
