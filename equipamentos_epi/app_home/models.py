@@ -15,12 +15,21 @@ class EPI(models.Model):
     nomeEPI = models.CharField(max_length=100)
     descricao = models.CharField(max_length=150)
     validade = models.DateField()
-    quantidade_disponivel = models.IntegerField()
+    quantidade_disponivel = models.PositiveIntegerField(
+
+        validators={
+            "min" : 0
+        }
+    )
     codigo = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nomeEPI
-    
+
+    def possui_equipamento(self):
+        qtd = Colaborador.objects.count()
+        return qtd > 0
+
 class Registrar(models.Model):
     STATUS_CHOICES = [
         ('emprestado', 'Emprestado'),
@@ -51,6 +60,11 @@ class Registrar(models.Model):
     data_devolucao = models.DateField(blank=True, null=True)
     data_emprestimo = models.DateField()
     data_prevista_da_devolucao = models.DateField()
+
+    def save(self):
+        self.equipamento.quantidade_disponivel -= 1
+        self.save()
+
 
     def __str__(self):
         return f'{self.equipamento} - {self.colaborador}'

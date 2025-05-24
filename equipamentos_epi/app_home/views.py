@@ -29,6 +29,8 @@ def listar_colaboradores(request):
 
 def listar_epi(request):
     busca = request.GET.get('busca', '')
+    if EPI.quantidade_disponivel():
+        ...
     if busca:
         epi = EPI.objects.filter(nomeEPI__icontains=busca)
     else:      
