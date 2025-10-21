@@ -5,9 +5,9 @@
     position: fixed;
     top: 50px;
     left: 0;
-    background-color: #445D48;
+    background-color: #708993;
     padding-top: 20px;
-    color:rgb(0, 0, 0);
+    color:#19183B;
     padding-left: 20px;
     z-index: 999;
 }
@@ -21,7 +21,7 @@
 .accordion {
     padding: 10px;
     font-size: 20px;
-    background-color:rgb(55, 68, 51);
+    background-color:#708993;
     color: white;
     border:none;
     width: 100%;
@@ -31,14 +31,14 @@
 
 .sidebar li:hover,
 .accordion:hover {
-    background-color:rgb(0, 0, 0);
+    background-color: #19183B;
     color:rgb(255, 255, 255);
 }
 
 .panel {
     display: none;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #E7F2EF;
     overflow: hidden;
     border-left: 3px solid;
     margin-bottom: 10px;
@@ -55,20 +55,20 @@
 }
 
 .panel a:hover {
-    background-color: #DBCC95;    
-    color: black;
+    background-color: #19183B;    
+    color: white;
 }
 
 /*ESTILO DA BARRA HOME*/
 .navbar {
     width: 100%;
-    height: 60px;
-    background-color: #000000;
+    height: 70px;
+    background-color: #708993;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 40px;
     position: fixed;
     top: 0;
     left: 0;
@@ -112,7 +112,7 @@
 }
 
 .dropdown-content a {
-    color: black;              
+    color: #19183B;              
     padding: 12px 16px;       
     text-decoration: none;    
     display: block;  
@@ -120,7 +120,7 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #DBCC95;    
+    background-color: #E7F2EF;    
 }
 
 .navbar li {
@@ -140,7 +140,7 @@
 
 /*ESTILO DE FUNDO DA PAGINA*/
 .main-content {
-    background-color: #F4F8D3;
+    background-color: #ffffff;
 }
 
 h2 {
@@ -153,8 +153,10 @@ h2 {
 form {
     max-width: 600px;           
     margin: 20px auto;         
-    background-color: #DBCC95; 
-    padding: 20px;             
+    background-color: #B7B89F; 
+    color: black;
+    padding: 20px;        
+    font-size: 17px;     
     border-radius: 8px;        
 }
 
@@ -168,7 +170,7 @@ form input, form select, form textarea {
 }
 
 form button {
-    background-color: #445D48;  
+    background-color: #19183B;  
     color: white;              
     padding: 12px 16px;          
     border: none;              
@@ -179,8 +181,7 @@ form button {
 }
 
 form button:hover {
-    background-color:rgb(0, 0, 0);   
-    color: white;
+    background-color:#708993;   
 }
 
 form p {             
@@ -189,7 +190,7 @@ form p {
 
 /*ESTILO DO HTML PERFIL*/
 body {
-    background-color: #F4F8D3;  
+    background-color: #ffffff;  
     margin: 10;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -220,7 +221,7 @@ body {
     right: 0;
     width: 250px;
     height: 100vh;
-    background-color: #445D48;
+    background-color: #708993;
     padding-top: 70px; 
     padding-left: 20px;
     z-index: 9999; 
@@ -240,7 +241,7 @@ body {
 }
 
 .perfil-sidebar-direita li:hover {
-    background-color: #000000;
+    background-color: #19183B;
 }
 
 .sidebar-button {
@@ -272,9 +273,8 @@ body {
     padding: 20px 20px 20px 20px; 
     width: fit-content;
     max-width: 600px;
-    background-color: #445D48; 
-    color: #ffffff; 
-    border: 2px solid #000000;
+    background-color: #B7B89F; 
+    color: black; 
     border-radius: 10px;
     font-size: 1.3rem;
   }
@@ -305,7 +305,7 @@ body {
 }
 
 .botao-busca {
-    background-color: #445D48; 
+    background-color: #19183B; 
     color: white; 
     padding: 8px 16px; 
     border: none; 
@@ -316,7 +316,7 @@ body {
 }
 
 .botao-busca:hover {
-    background-color: #000000; 
+    background-color: #708993; 
 }
 
 /*BOTÃO CANCELAR*/
@@ -335,7 +335,7 @@ body {
 }
 
 .botao-can:hover {
-    background-color: #000000; 
+    background-color: #708993; 
 }
 
 /*FORM NÃO PERMITIDOS*/

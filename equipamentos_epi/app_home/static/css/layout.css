@@ -1,6 +1,6 @@
 /* BOTÃO EDITAR */
 .botao-edit {
-    background-color: #638889; 
+    background-color: #19183B; 
     color: white;
     padding: 5px 13px;
     border: none;
@@ -13,7 +13,7 @@
 }
 
 .botao-edit:hover {
-    background-color: #000000; 
+    background-color: #708993; 
 }
 
 /* BOTÃO EXCLUIR */
@@ -30,7 +30,7 @@
 }
 
 .botao-exclui:hover {
-    background-color: #010101; 
+    background-color: #708993; 
 }
 
 /*GRAFICO*/
@@ -74,7 +74,7 @@ h4 {
     margin-left: 5%;
     margin-top: 30px;
     font-size: 30px;
-    color: #445D48;
+    color: #19183B;
 }
 
 .descrição img {
@@ -97,7 +97,7 @@ h4 {
 }
 
 .epi-item {
-    background-color: #DBCC95;
+    background-color: #B7B89F;
     display: flex;
     flex-direction: column; 
     padding: 20px;
@@ -118,7 +118,7 @@ h4 {
     margin: 0;
     font-size: 1.5em;
     text-align: center;
-    color: #445D48;
+    color: #19183B;
 }
 
 .epi-item p {
@@ -137,15 +137,15 @@ table {
 }
 
 th {
-    background-color: #374433;
-    color: white;
+    background-color: #B7B89F;
+    color: black;
     text-align: center;
     padding: 12px 15px;
     font-size: 16px;
 }
 
 table, th, td {
-    border: 1px solid #060606;
+    border: 1px solid #979797;
 }
 
 /*TELA DE AVISOS*/
@@ -157,7 +157,7 @@ table, th, td {
 }
 
 .card {
-    background-color: #DBCC95;
+    background-color: #B7B89F;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -174,14 +174,14 @@ table, th, td {
 .card strong {
     display: block;
     font-size: 15px;
-    color: #000000;
+    color: #19183B;
     margin-bottom: 10px;
 }
 
 .card p {
     font-size: 20px;
     font-weight: bold;
-    color: #000000;
+    color: #19183B;
 }
 
 .aviso-container {
@@ -194,7 +194,7 @@ table, th, td {
 }
 
 .aviso {
-    background-color: #DBCC95;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     position: relative;

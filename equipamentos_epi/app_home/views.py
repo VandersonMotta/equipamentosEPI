@@ -29,15 +29,16 @@ def listar_colaboradores(request):
 
 def listar_epi(request):
     busca = request.GET.get('busca', '')
-    if EPI.quantidade_disponivel():
-        ...
-    if busca:
-        epi = EPI.objects.filter(nomeEPI__icontains=busca)
-    else:      
-        epi = EPI.objects.all()
-        
-    return render(request, 'app_home/pages/listar_epi.html', {'equipamentos': epi, 'busca': busca})
 
+    if busca:
+        equipamentos = EPI.objects.filter(nomeEPI__icontains=busca)
+    else:
+        equipamentos = EPI.objects.all()
+
+    return render(request, 'app_home/pages/listar_epi.html', {
+        'equipamentos': equipamentos,
+        'busca': busca
+    })
 
 def editar_colaborador(request, id):
     colaborador = get_object_or_404(Colaborador, id=id)

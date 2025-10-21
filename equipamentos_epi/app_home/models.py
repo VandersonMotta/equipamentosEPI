@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 
@@ -16,10 +17,7 @@ class EPI(models.Model):
     descricao = models.CharField(max_length=150)
     validade = models.DateField()
     quantidade_disponivel = models.PositiveIntegerField(
-
-        validators={
-            "min" : 0
-        }
+        validators=[MinValueValidator(0)]  # ✅ Aqui
     )
     codigo = models.CharField(max_length=100)
 
